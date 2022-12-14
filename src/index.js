@@ -1,5 +1,6 @@
 import "./style.css";
 import checklist from "./assets/checklist.svg";
+import gitcat from "./assets/git-cat.png";
 import { listFunctionality, listMain, listElementContainer } from "./listFunctionality";
 
 
@@ -16,13 +17,13 @@ const first = () => {
 
     const headerTextArea = document.createElement('div');
     headerTextArea.setAttribute('id', 'textContainer');
-    headerTextArea.textContent = "LOL";
+    headerTextArea.textContent = "Have you been naughty or nice? - A webpack 5 & js demoproject";
     containerHeader.appendChild(containerLogo);
     containerHeader.appendChild(headerTextArea);
 
     return containerHeader;
 }
-
+  
 const mainArea = () => {
     
 
@@ -30,11 +31,7 @@ const mainArea = () => {
     container.setAttribute('id','mainContainer');
 
     const right = document.createElement('div');
-    const h1Right = document.createElement('h1');
-    right.setAttribute('id','rightMain');
-    h1Right.textContent = "Have you been naughty or nice?"
-    right.appendChild(h1Right);
-    
+    right.setAttribute('id','rightMain');    
     //list input here
     const listContainer = document.createElement('div');
     listContainer.setAttribute('id','listContainer');
@@ -47,11 +44,51 @@ const mainArea = () => {
 
     return container;
 }
+
+const footer = () => {
+
+    const footerContainer = document.createElement('div');
+    footerContainer.setAttribute('id', 'footerContainer');
+    
+    //authbox
+    const authorContainer = document.createElement('div');
+    authorContainer.setAttribute('id','authorContainer');
+    const authorPara = document.createElement('p');
+    authorPara.setAttribute('id','authorPara');
+    authorPara.textContent = "© heinohen 2022 "
+    const footerGitLink = document.createElement('a');
+    footerGitLink.href = "https://www.github.com/heinohen"
+    const footerGitImg = document.createElement('img');
+    footerGitImg.src = gitcat;
+    footerGitImg.alt = "Gitcat";
+    footerGitLink.appendChild(footerGitImg);
+    authorContainer.appendChild(authorPara);
+    authorContainer.appendChild(footerGitLink);
+    
+    //bg copyrightbox
+    const copyrightContainer = document.createElement('div');
+    // Photo by <a href="https://unsplash.com/@olesichka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Olesia Buyar</a> on <a href="https://unsplash.com/s/photos/christmas-present?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    const copyPara = document.createElement('a');
+    copyPara.setAttribute('id', 'copyPara');
+    copyPara.href = "https://unsplash.com/@olesichka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText";
+    copyPara.textContent = "Photo by Olesia Buyar @ unsplash.com";
+
+    copyrightContainer.appendChild(copyPara);
+
+
+    //add to footer
+    footerContainer.appendChild(authorContainer);
+    footerContainer.appendChild(copyrightContainer);
+
+    return footerContainer;
+}
 const bodyContainer = document.createElement('div');
 bodyContainer.setAttribute('id','bodyContainer');
 bodyContainer.appendChild(first());
 bodyContainer.appendChild(mainArea());
+bodyContainer.appendChild(footer());
 document.body.appendChild(bodyContainer);
+
 
 window.addEventListener('load', () => {
     const form = document.querySelector('#add-new-task');
@@ -64,7 +101,6 @@ window.addEventListener('load', () => {
         const inputNotEmpty = inp.value;
 
         if (!inputNotEmpty) {
-            console.log("is empty");
             return;
         }
         
