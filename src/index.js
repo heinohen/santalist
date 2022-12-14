@@ -2,12 +2,10 @@ import "./style.css";
 import checklist from "./assets/checklist.svg";
 import { listFunctionality, listMain, listElementContainer } from "./listFunctionality";
 
-
 const first = () => {
     
     const containerHeader = document.createElement('div');
     containerHeader.setAttribute('id', 'headerContainer');
-  
     const containerLogo = document.createElement('div');
     const headerLogo = document.createElement('img');
     headerLogo.src = checklist;
